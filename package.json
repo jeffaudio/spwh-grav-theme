@@ -1,0 +1,33 @@
+{
+  "name": "spwh-grav-theme",
+  "author": "Jeff Hentschel",
+  "version": "0.0.1",
+  "description": "SPWH Wordpress Theme",
+  "devDependencies": {
+    "chalk": "^0.4.0",
+    "dateformat": "^1.0.7-1.2.3",
+    "gulp": "^3.6.1",
+    "gulp-clean": "^0.2.4",
+    "gulp-load-plugins": "^0.5.0",
+    "gulp-load-utils": "0.0.4",
+    "gulp-minify-css": "^0.3.4",
+    "gulp-notify": "^1.2.5",
+    "gulp-sass": "^0.7.1",
+    "minimist": "0.0.8"
+  },
+  "paths": {
+    "lib": {
+      "scss": [
+        "./bower_components/foundation/scss"
+      ]
+    },
+    "src": {
+      "scss": "./theme/sass/*.scss"
+      "js": "./theme/js/*.js"
+    },
+    "dest": {
+      "css": "./theme/css",
+      "js": "./theme/js"
+    },
+  },
+}
