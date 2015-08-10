@@ -1,8 +1,6 @@
 
 @import "colors";
+@import "settings";
 @import "foundation";
 
-.circle {
-	border-radius: 50%;
-	bg-color: $chambourd;
-}
+@import "layout";
