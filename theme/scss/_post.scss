@@ -1,0 +1,40 @@
+.post-header {
+	.title {
+		margin: 0;
+		padding: 0;
+		font-weight: bold;
+		color: $title-color;
+		line-height: 1; //em
+		font-size: 2em;
+	}
+
+	.subheading {
+		font-size: 1em;
+		color: $subheading-color;
+	}
+}
+
+.post-content a {
+	$underline-start: 11%;
+	$underline-stop: 16%;
+
+	background-image: linear-gradient(to top, 
+		transparent $underline-start, 
+		$underline-color $underline-start, 
+		$underline-color $underline-stop, 
+		transparent $underline-stop);
+}
+
+.post-footer {
+	border-top: 1px solid gray;
+	padding: 0.5em 0;
+	border-bottom: 1px solid gray;
+	line-height: $social-height;
+
+	p {
+		margin: 0;
+		display: inline-block;
+	}
+
+	margin-bottom: 0.5em;
+}

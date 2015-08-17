@@ -1,0 +1,28 @@
+
+body {
+	font-family: source-sans-pro,calibri,candara,arial,sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: merriweather,palatino,book antiqua,sans-serif;
+}
+
+p {
+	margin-bottom: 1em;
+}
+
+a:hover {
+	background-color: $flattering-peach;
+}
+
+.header a:hover {
+	background: none;
+}
+
+blockquote {
+	font-size: 1.1em;
+	padding: 0.5em 0 0.5em 0.5em;
+	margin: 1em 0;
+	color: $oyster-bay;
+	border-left: 5px solid $oyster-bay;
+}

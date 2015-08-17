@@ -1,3 +1,4 @@
+$social-height: 25px;
 
 .header-logo {
 	width: 100%;
@@ -12,4 +13,90 @@
 /* Center mobile menu options */
 .top-bar-section ul li > a {
 	text-align: center;
+}
+
+img {
+	margin-bottom: 1em;
+}
+
+ul.tags {
+	@extend .inline-list;
+	color: $expressive-plum;
+
+	.tag {
+		&:before { content: '#'; }
+		&:first-child { margin-left: 0; }
+	}
+}
+
+.post {
+	margin-bottom: 3em;
+
+	img.feature-image {
+		margin-bottom: 0.5em;
+	}
+}
+
+ul.posts {
+	@extend .row;
+	list-style: none;
+
+	li {
+		@extend .small-12;
+		@extend .medium-4;
+		@extend .columns;
+
+		&:last-child {
+			float: left !important;
+		}
+
+		.post {
+			$post-padding: 5px;
+
+			border: 1px solid $chambourd;
+			padding: 5px;
+			text-align: center;
+			background-image: none;
+			display: block;
+			margin-bottom: 1em;
+
+			&:hover {
+				background-color: $snowbound;
+			}
+
+			.feature-image {
+				margin-bottom: $post-padding;
+			}
+		}
+	}
+}
+
+.footer {
+	margin-top: 1em;
+
+	p {
+		font-size: 0.75em;
+		color: $subheading-color;
+	}
+}
+
+/* Ad placeholder for dev */
+.ad {
+	background-color: rgba(0,1,0,0.25);
+	margin: 1em 0;
+
+	&.landscape {
+		width: 1000px;
+		height: 90px;
+	}
+
+	&.square {
+		width: 100%;
+		height: 300px;
+	}
+
+	&.skyscraper {
+		width: 100%;
+		height: 720px;
+	}
 }

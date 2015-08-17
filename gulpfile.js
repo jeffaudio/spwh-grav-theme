@@ -43,7 +43,7 @@ gulp.task('default', ['minnify-css'], function() {
 
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['compile-sass'], function() {
 	var watcher = gulp.watch(pkg.paths.src.scss, ['compile-sass']);
 
 	watcher.on('change', function(evt) {
