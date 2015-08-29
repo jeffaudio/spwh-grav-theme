@@ -1,13 +1,17 @@
 $social-height: 25px;
 
-.header-logo {
+body > header {
 	width: 100%;
-	height: 175px;
 	display: block;
 	box-shadow: inset 0 -5px 5px -5px #000;
 	text-align: left;
-	padding-left: 30px;
-	padding-top: 30px;
+
+	.logo {
+		height: 175px;
+		display: block;
+		padding-left: 30px;
+		padding-top: 30px;
+	}
 }
 
 /* Center mobile menu options */

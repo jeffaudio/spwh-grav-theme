@@ -11,6 +11,17 @@ p {
 	margin-bottom: 1em;
 }
 
+article a {
+	$underline-start: 11%;
+	$underline-stop: 16%;
+
+	background-image: linear-gradient(to top, 
+		transparent $underline-start, 
+		$underline-color $underline-start, 
+		$underline-color $underline-stop, 
+		transparent $underline-stop);
+}
+
 a:hover {
 	background-color: $flattering-peach;
 }
