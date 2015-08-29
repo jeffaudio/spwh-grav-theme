@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% block head %}
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+	
+	{% if header.description %}
+		<meta name="description" content="{{ header.description }}">
+	{% else %}
+		<meta name="description" content="{{ site.description }}">
+	{% endif %}
+	
+	<meta name="keywords" content="dogs, agility, dog training, eskie, american eskimo, dog agility, diy, home renovation" />
+
+	<!-- 
+	<link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png') }}" />
+	<link rel="canonical" href="{{ page.url(true, true) }}" />
+	-->
+
+	{% block stylesheets %}
+		{% do assets.addCss('theme://css/style.css', 100) %}
+
+		{{ assets.css() }}
+	{% endblock %}
+
+	{% endblock head %}
+</head>
+
+<body>
+
+{% include partials/header.html.twig %}
+
+<div class="row">
+	<main class="blog">
+		{% block content %}{% endblock %}
+	</main>
+
+	<section class="sidebar">
+		{% include 'partials/sidebar.html.twig' %}
+	</section>
+</div>
+
+{% include 'partials/footer.html.twig' %}
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/foundation/js/foundation.min.js"></script>
+<script async src=http://use.edgefonts.net/source-sans-pro;merriweather.js></script>
+<script>
+	$(document).foundation();
+</script>
+</body>
+</html>
