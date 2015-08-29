@@ -11,7 +11,7 @@ p {
 	margin-bottom: 1em;
 }
 
-article a {
+a {
 	$underline-start: 11%;
 	$underline-stop: 16%;
 
@@ -20,20 +20,103 @@ article a {
 		$underline-color $underline-start, 
 		$underline-color $underline-stop, 
 		transparent $underline-stop);
-}
 
-a:hover {
-	background-color: $flattering-peach;
+	&:hover {
+		background-color: $flattering-peach;
+	}
 }
 
 .header a:hover {
 	background: none;
 }
 
-blockquote {
-	font-size: 1.1em;
-	padding: 0.5em 0 0.5em 0.5em;
-	margin: 1em 0;
-	color: $oyster-bay;
-	border-left: 5px solid $oyster-bay;
+code {
+	background: $snowbound;
 }
+pre {
+	background: $snowbound;
+	border: 1px solid $ski-slope;
+	padding: 1em;
+	margin: 1em 0;
+
+	code {
+		overflow: scroll;
+		background: none;
+		border: none;
+		display: block;
+		padding: 0;
+	}
+}
+
+
+$blockquote-width: 10px;
+$blockquote-darken: 25%;
+$blockquote-lighten: 25%;
+
+blockquote {
+	border-left: $blockquote-width solid $oyster-bay;
+	margin: 1em 0;
+	padding-left: $blockquote-width;
+	padding-top: 0;
+
+	p {
+		font-size: 1.1rem;
+		padding: 0.5em;
+		color: #999;
+	}
+	cite {
+		display: block;
+		text-align: right;
+		color: #666;
+		font-size: 1.2rem;
+	}
+}
+
+blockquote > blockquote > blockquote {
+	margin: 0;
+
+	p {
+		padding: 1em;
+		display: block;
+		font-size: 1rem;
+		margin-top: 0rem;
+		margin-bottom: 0rem;
+	}
+
+	> p {
+		$color: darken($flattering-peach, 15%);
+		margin-left: $blockquote-width * -6;
+		margin-right: $blockquote-width * -6;
+		border-left: $blockquote-width solid $color;
+		background: lighten($color, $blockquote-lighten);
+		color: darken($color, $blockquote-darken);
+	}
+
+	> blockquote > p {
+		$color: red;
+		margin-left: $blockquote-width * -8;
+		margin-right: $blockquote-width * -8;
+		border-left: $blockquote-width solid $color;
+		background: lighten($color, $blockquote-lighten);
+		color: darken($color, $blockquote-darken);
+	}
+
+	> blockquote > blockquote > p {
+		$color: darken($raindrop, 15%);
+		margin-left: $blockquote-width * -10;
+		margin-right: $blockquote-width * -10;
+		border-left: $blockquote-width solid $color;
+		background: lighten($color, $blockquote-lighten);
+		color: darken($color, $blockquote-darken);
+	}
+
+	> blockquote > blockquote > blockquote > p {
+		$color: darken($shagreen, 15%);
+		margin-left: $blockquote-width * -12;
+		margin-right: $blockquote-width * -12;
+		border-left: $blockquote-width solid $color;
+		background: lighten($color, $blockquote-lighten);
+		color: darken($color, $blockquote-darken);
+	}
+}
+
