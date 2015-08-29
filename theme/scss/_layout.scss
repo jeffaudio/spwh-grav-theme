@@ -14,6 +14,18 @@ body > header {
 	}
 }
 
+main.blog {
+	@extend .small-12;
+	@extend .large-9;
+	@extend .columns;
+}
+
+section.sidebar {
+	@extend .small-12;
+	@extend .large-3;
+	@extend .columns;
+}
+
 /* Center mobile menu options */
 .top-bar-section ul li > a {
 	text-align: center;
@@ -75,12 +87,19 @@ ul.posts {
 	}
 }
 
-.footer {
+body > footer {
+	@extend .row;
 	margin-top: 1em;
 
 	p {
 		font-size: 0.75em;
 		color: $subheading-color;
+	}
+
+	div { 
+		@extend .small-12;
+		@extend .medium-6;
+		@extend .columns;
 	}
 }
 
