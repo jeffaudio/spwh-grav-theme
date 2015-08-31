@@ -1,0 +1,71 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+	<div class="row">
+		<div class="small-12 columns">
+			<header>
+				<h1 class="title"><a href="{{ page.url }}">{{ page.title }}</a></h1>
+				<h3 class="subheading">
+					{% if page.header.author %}By {{ page.header.author }} | {% endif %}
+					{{ page.date|date("M. d, Y") }}
+				</h3>
+  		</header>
+
+  		<img class="feature-image" src="{{ page.media.images|first.url }}" />
+  	</div>
+  </div>
+
+  <div class="row">
+		<main class="blog">
+			<article class="post">
+				<section class="content">
+					{{ page.content }}
+				</section>
+	
+				<footer>
+					<p>Categories: [todo]</p>
+					<div class="social">
+						<div class="social-link facebook"><a href="#"></a></div>
+						<div class="social-link twitter"><a href="#"></a></div>
+						<div class="social-link tumblr"><a href="#"></a></div>
+					</div>
+				</footer>
+
+				<ul class="tags">
+					<li class="tag">agility</li>
+					<li class="tag">jumpers</li>
+					<li class="tag">akc</li>
+				</ul>
+			</article>
+
+			<ul class="posts related-content">
+				<li>
+					<a href="#" class="post">
+						<img src="theme/images/post-header.jpg" class="feature-image" />
+						<div class="title">My Related Post 1</div>
+					</a>
+				</li>
+
+				<li>
+					<a href="#" class="post">
+						<img src="theme/images/post-header.jpg" class="feature-image" />
+						<div class="title">My Related Post 1</div>
+					</a>
+				</li>
+
+				<li>
+					<a href="#" class="post">
+						<img src="theme/images/post-header.jpg" class="feature-image" />
+						<div class="title">My Related Post 1</div>
+					</a>
+				</li>
+			</ul>
+		</main>
+
+		<section class="sidebar">
+			{% include 'partials/sidebar.html.twig' %}
+		</section>
+	</div>
+
+	{% include 'partials/footer.html.twig' %}
+{% endblock content %}

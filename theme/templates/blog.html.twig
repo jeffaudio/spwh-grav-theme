@@ -1,0 +1,15 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+	<div class="row">
+		<main class="blog">
+			{{ page.content }}
+		</main>
+
+		<section class="sidebar">
+			{% include 'partials/sidebar.html.twig' %}
+		</section>
+	</div>
+
+	{% include 'partials/footer.html.twig' %}
+{% endblock content %}

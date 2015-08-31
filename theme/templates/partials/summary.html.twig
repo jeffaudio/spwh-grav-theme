@@ -1,0 +1,24 @@
+<article class="post">
+  <header>
+		<h1 class="title"><a href="{{ page.url }}">{{ page.title }}</a></h1>
+		<h3 class="subheading">
+			{% if page.header.author %}By {{ page.header.author }} | {% endif %}
+			{{ page.date|date("M. d, Y") }}
+		</h3>
+  </header>
+
+	<img class="feature-image" src="{{ page.media.images|first.url }}" />
+
+	<section class="content">
+		{{ page.summary }}
+	</section>
+	
+	<footer>
+		<p><a href="{{ page.url }}">Continue Reading</a></p>
+		<div class="social">
+			<div class="social-link facebook"><a href="#"></a></div>
+			<div class="social-link twitter"><a href="#"></a></div>
+			<div class="social-link tumblr"><a href="#"></a></div>
+		</div>
+	</footer>
+</article>

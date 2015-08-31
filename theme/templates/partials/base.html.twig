@@ -30,20 +30,10 @@
 </head>
 
 <body>
-
 {% include 'partials/header.html.twig' %}
 
-<div class="row">
-	<main class="blog">
-		{% block content %}{% endblock %}
-	</main>
-
-	<section class="sidebar">
-		{% include 'partials/sidebar.html.twig' %}
-	</section>
-</div>
-
-{% include 'partials/footer.html.twig' %}
+{% block content %}
+{% endblock %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script>
