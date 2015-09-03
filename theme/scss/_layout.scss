@@ -41,8 +41,13 @@ ul.tags {
 	color: $expressive-plum;
 
 	.tag {
-		&:before { content: '#'; }
+		a:before { content: '#'; }
 		&:first-child { margin-left: 0; }
+	}
+
+	> li > a {
+		display: inline;
+		background-image: none;
 	}
 }
 

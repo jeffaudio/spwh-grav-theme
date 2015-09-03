@@ -9,13 +9,13 @@
 					{% if page.header.author %}By {{ page.header.author }} | {% endif %}
 					{{ page.date|date("M. d, Y") }}
 				</h3>
-  		</header>
+			</header>
 
-  		<img class="feature-image" src="{{ page.media.images|first.url }}" />
-  	</div>
-  </div>
+			<img class="feature-image" src="{{ page.media.images|first.url }}" />
+		</div>
+	</div>
 
-  <div class="row">
+	<div class="row">
 		<main class="blog">
 			<article class="post">
 				<section class="content">
@@ -23,7 +23,9 @@
 				</section>
 	
 				<footer>
-					<p>Categories: [todo]</p>
+					{% if page.taxonomy.category %}
+						<p>Categories: {% for category in page.taxonomy.category %}<a href="{{ page.parent.url }}/category:{{ category }}" rel="category">{{ category }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</p>
+					{% endif %}
 					<div class="social">
 						<div class="social-link facebook"><a href="#"></a></div>
 						<div class="social-link twitter"><a href="#"></a></div>
@@ -31,11 +33,13 @@
 					</div>
 				</footer>
 
-				<ul class="tags">
-					<li class="tag">agility</li>
-					<li class="tag">jumpers</li>
-					<li class="tag">akc</li>
-				</ul>
+				{% if page.taxonomy.tag %}
+					<ul class="tags">
+						{% for tag in page.taxonomy.tag %}
+							<li class="tag"><a href="{{ page.parent.url }}/tag:{{ tag }}" rel="tag">{{ tag }}</a></li>
+						{% endfor %}
+					</ul>
+				{% endif %}
 			</article>
 
 			<ul class="posts related-content">
