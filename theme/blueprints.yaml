@@ -3,9 +3,9 @@ version: 0.0.1
 description: "This theme is used for the SoftPuppyWarmhouse website."
 icon: empire
 author:
-	name: Jeff Hentschel
-	email: hentschel.jeff@gmail.com
-	url: http://www.softpuppywarmhouse.com/
+  name: Jeff Hentschel
+  email: hentschel.jeff@gmail.com
+  url: http://www.softpuppywarmhouse.com/
 homepage: http://www.softpuppywarmhouse.com/
 keywords: blog, html5, foundation, css3, scss, sass
 bugs: https://github.com/jeffaudio/spwh-grav-theme/issues

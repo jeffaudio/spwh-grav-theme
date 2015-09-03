@@ -42,28 +42,9 @@
 				{% endif %}
 			</article>
 
-			<ul class="posts related-content">
-				<li>
-					<a href="#" class="post">
-						<img src="theme/images/post-header.jpg" class="feature-image" />
-						<div class="title">My Related Post 1</div>
-					</a>
-				</li>
-
-				<li>
-					<a href="#" class="post">
-						<img src="theme/images/post-header.jpg" class="feature-image" />
-						<div class="title">My Related Post 1</div>
-					</a>
-				</li>
-
-				<li>
-					<a href="#" class="post">
-						<img src="theme/images/post-header.jpg" class="feature-image" />
-						<div class="title">My Related Post 1</div>
-					</a>
-				</li>
-			</ul>
+			{% if config.plugins.relatedpages.enabled and related_pages|length > 0 %}
+    		{% include 'partials/related.html.twig' %}
+			{% endif %}
 		</main>
 
 		<section class="sidebar">

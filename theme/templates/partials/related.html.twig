@@ -1,0 +1,13 @@
+<ul class="posts">
+	{% for related_path, score in related_pages %}
+		{% set related = grav['pages'].get(related_path) %}
+		{% if related %}
+			<li>
+				<a class="post" href="{{ related.url }}" title="{{ related.title }}">
+					<img src="{% if related.media.images %}{{ related.media.images|first.cropZoom(500,350).url }}{% else %}{{ theme_url }}/images/logo-thumb.jpg{% endif %}" alt="{{ related.title }}" class="feature-image" />
+					<div class="title">{{ related.title|truncate(20) }}</div>
+				</a>
+			</li>
+		{% endif %}
+	{% endfor %}
+</ul>
