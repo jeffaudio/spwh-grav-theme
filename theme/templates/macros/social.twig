@@ -1,0 +1,17 @@
+{% macro facebookShare(page) %}
+	<div class="social-link facebook">
+		<a href="https://www.facebook.com/sharer.php?u={{ page.url(true) }}" target="_blank"></a>
+	</div>
+{% endmacro %}
+
+{% macro twitterShare(page) %}
+	<div class="social-link twitter">
+		<a href="https://twitter.com/share?url={{ page.url(true) }}&text={{ page.title }}&hashtags={{ page.taxonomy.tag|join(',') }}&via=jeffandhillary" target="_blank"></a>
+	</div>
+{% endmacro %}
+
+{% macro tumblrShare(page) %}
+	<div class="social-link tumblr">
+		<a href="https://www.tumblr.com/share/link?url={{ page.url(true) }}&name={{ page.title }}" target="_blank"></a>
+	</div>
+{% endmacro %}
