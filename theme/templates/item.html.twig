@@ -26,11 +26,7 @@
 					{% if page.taxonomy.category %}
 						<p>Categories: {% for category in page.taxonomy.category %}<a href="{{ page.parent.url }}/category:{{ category }}" rel="category">{{ category }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</p>
 					{% endif %}
-					<div class="social">
-						<div class="social-link facebook"><a href="#"></a></div>
-						<div class="social-link twitter"><a href="#"></a></div>
-						<div class="social-link tumblr"><a href="#"></a></div>
-					</div>
+					{% include 'partials/social.html.twig' %}
 				</footer>
 
 				{% if page.taxonomy.tag %}
