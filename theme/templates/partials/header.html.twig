@@ -1,27 +1,28 @@
 <header class="header">
 	<nav class="top-bar" data-topbar role="navigation">
-	  <ul class="title-area">
-	     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-	    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-	  </ul>
+		<ul class="title-area">
+			 <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+			<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+		</ul>
 
-	  <section class="top-bar-section">
-	    <ul class="left">
-	      <li><a href="#"><span class="fi-social-facebook"></span></a></li>
-	      <li><a href="#"><span class="fi-social-twitter"></span></a></li>
-	      <li><a href="#"><span class="fi-social-tumblr"></span></a></li>
-	      <li><a href="#"><span class="fi-social-instagram"></span></a></li>
-	      <li><a href="#"><span class="fi-social-youtube"></span></a></li>
-	      <li><a href="#"><span class="fi-social-pinterest"></span></a></li>
-	    </ul>
+		<section class="top-bar-section">
+			<ul class="left">
+				{% for network, url in site.social %}
+					<li><a href="{{ url }}"><span class="fi-social-{{ network }}"></span></a></li>
+				{% endfor %}
+			</ul>
 
-	    <ul class="right">
-	      <li><a href="#">Agility</a></li>
-	      <li><a href="#">Fostering</a></li>
-	      <li><a href="#">Training</a></li>
-	      <li><a href="#">Projects</a></li>
-	    </ul>
-	  </section>
+			<ul class="right">
+				{% for page in pages.children.visible %}
+					{% set pageClass = (page.active or page.activeChild) ? 'active' : '' %}
+
+					<li class="{{ pageClass }}"><a href="{{ page.url }}">
+						{% if page.header.icon %}<i class="fi-{{ page.header.icon }}"></i>{% endif %}
+						{{ page.menu }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</section>
 	</nav>
 
 	<a class="logo" href="/" data-interchange="[{{ theme_url }}/images/dots.jpg, (default)], [{{ theme_url }}/images/dots@2x.jpg, (retina)]">
