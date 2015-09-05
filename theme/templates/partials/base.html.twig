@@ -37,9 +37,32 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script>
-<script async src=http://use.edgefonts.net/source-sans-pro;merriweather.js></script>
+<!-- <script async src=http://use.edgefonts.net/source-sans-pro;merriweather.js></script> -->
 <script>
-	$(document).foundation();
+	(function() {
+		$(document).foundation();
+
+		$(document).ready(function() {
+			var input = $(".search input[type='text']");
+			input.on('keypress', function(evt) {
+				if (evt.which == 13) {
+					evt.preventDefault();
+					search(input.val());
+				}
+			});
+
+			var btn = $(".search .button");
+			btn.click(function() {
+				evt.preventDefault();
+				search(input.val());
+			});
+		});
+
+		function search(text) {
+			var url = "{{ base_url }}{{ config.plugins.simplesearch.route }}/query";
+			window.location.href = url + '{{ config.system.param_sep }}' + text;
+		}
+	})();
 </script>
 </body>
 </html>

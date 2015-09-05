@@ -1,0 +1,21 @@
+{% embed 'partials/base.html.twig' %}
+	{% block content %}
+		<div class="row">
+			<main class="blog">
+				<h1 class="collection-title">Search Results</h1>
+
+				{% for page in search_results %}
+					{% include 'partials/summary.html.twig' with {'page':page, 'truncate':true} %}
+				{% endfor %}
+
+				<p class="search-stats"><strong>{{ query }}</strong> matched {{ search_results.count }} {{ 'post'|pluralize(search_results.count) }}</p>
+			</main>
+
+			<section class="sidebar">
+				{% include 'partials/sidebar.html.twig' %}
+			</section>
+		</div>
+
+		{% include 'partials/footer.html.twig' %}
+	{% endblock content %}
+{% endembed %}

@@ -15,7 +15,14 @@
 	{% block content %}
 		<div class="row">
 			<main class="blog">
+				{% if uri.params %}
+					{% if uri.params('tag') %} {% set filterText = uri.param('tag') %} {% endif %}
+					{% if uri.params('category') %} {% set filterText = uri.param('category') %} {% endif %}
+					<h1 class="collection-title">{{ filterText|title }} {{ 'Post'|pluralize(page.children.count()) }}</h1>
+				{% endif %}
+
 				{{ page.content }}
+				
 				{% for child in collection %}
 					{% include 'partials/summary.html.twig' with {'page':child, 'truncate':true} %}
 				{% endfor %}
