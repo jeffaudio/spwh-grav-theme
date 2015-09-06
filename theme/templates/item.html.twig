@@ -1,6 +1,14 @@
 {% extends 'partials/base.html.twig' %}
 
-{% set isInSeries = page.parent().parent().title != 'Pages' %}
+{% set series = page.parent() %}
+{% set isInSeries = series.parent().title != 'Pages' %}
+
+{% if isInSeries %}
+	{% set taxonomyRoot = series.parent.url %}
+{% else %}
+	{% set taxonomyRoot = page.parent.url %}
+{% endif %}
+
 
 {% block content %}
 	<div class="row">
@@ -13,7 +21,7 @@
 				</h3>
 
 				{% if isInSeries %}
-					<h3 class="subheading series">{{ page.parent().title }}</h3>
+					<h3 class="subheading series">{{ series.title }}</h3>
 				{% endif %}
 			</header>
 
@@ -27,10 +35,24 @@
 				<section class="content">
 					{{ page.content }}
 				</section>
+
+				{% if isInSeries %}
+					<div class="pagination-centered">
+						<ul class="pagination" role="menubar" aria-label="Pagination">
+							{% if not page.isLast %}
+								<li><a href="{{ page.prevSibling.url }}">&laquo; {{ page.prevSibling.title }}</a></li>
+							{% endif %}	
+
+							{% if not page.isFirst %}
+								<li><a href="{{ page.nextSibling.url }}">{{ page.nextSibling.title }} &raquo;</a></li>
+							{% endif %}			
+						</ul>
+					</div>
+				{% endif %}
 	
 				<footer>
 					{% if page.taxonomy.category %}
-						<p>Categories: {% for category in page.taxonomy.category %}<a href="{{ page.parent.url }}/category:{{ category }}" rel="category">{{ category }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</p>
+						<p>Categories: {% for category in page.taxonomy.category %}<a href="{{ taxonomyRoot }}/category:{{ category }}" rel="category">{{ category }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</p>
 					{% endif %}
 					{% include 'partials/social.html.twig' %}
 				</footer>
@@ -38,7 +60,7 @@
 				{% if page.taxonomy.tag %}
 					<ul class="tags">
 						{% for tag in page.taxonomy.tag %}
-							<li class="tag"><a href="{{ page.parent.url }}/tag:{{ tag }}" rel="tag">{{ tag }}</a></li>
+							<li class="tag"><a href="{{ taxonomyRoot }}/tag:{{ tag }}" rel="tag">{{ tag }}</a></li>
 						{% endfor %}
 					</ul>
 				{% endif %}
