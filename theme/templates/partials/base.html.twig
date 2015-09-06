@@ -19,12 +19,8 @@
 	<link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png') }}" />
 	<link rel="canonical" href="{{ page.url(true, true) }}" />
 	-->
-
-	{% block stylesheets %}
-		{% do assets.addCss('theme://css/style.css', 100) %}
-
-		{{ assets.css() }}
-	{% endblock %}
+	
+	<link href="{{ theme_url }}/css/style.css" type="text/css" rel="stylesheet" />
 
 	{% endblock head %}
 </head>
