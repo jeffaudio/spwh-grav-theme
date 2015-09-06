@@ -1,6 +1,13 @@
 {% macro postcard(post, fallbackImageUrl) %}
+
+	{% if post.media.images %}
+		{% set thumb = post.media.images %}
+	{% elseif post.parent().media.images %}
+		{% set thumb = post.parent().media.images %}
+	{% endif %}
+
 	<a class="post" href="{{ post.url }}" title="{{ post.title }}">
-		<img src="{% if post.media.images %}{{ post.media.images|first.cropZoom(500,350).url }}{% else %}{{ fallbackImageUrl }}{% endif %}" alt="{{ post.title }}" class="feature-image" />
+		<img src="{% if thumb %}{{ thumb|first.cropZoom(500,350).url }}{% else %}{{ fallbackImageUrl }}{% endif %}" alt="{{ post.title }}" class="feature-image" />
 		<div class="title">{{ post.title|truncate(20) }}</div>
 	</a>
 {% endmacro %}
