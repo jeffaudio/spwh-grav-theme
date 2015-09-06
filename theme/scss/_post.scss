@@ -20,6 +20,10 @@ header.post,.post header,.series header {
 	margin: 0;
 }
 
+.series > header + .posts {
+	margin-top: 1em;
+}
+
 header.post {
 	.title { font-size: 3em; }
 	.subheading { 
