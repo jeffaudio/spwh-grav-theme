@@ -19,16 +19,29 @@
 					{% if uri.params('tag') %} {% set filterText = uri.param('tag') %} {% endif %}
 					{% if uri.params('category') %} {% set filterText = uri.param('category') %} {% endif %}
 					<h1 class="collection-title">{{ filterText|title }} {{ 'Post'|pluralize(page.children.count()) }}</h1>
-				{% endif %}
 
-				{{ page.content }}
-				
-				{% for child in collection %}
-					{% include 'partials/summary.html.twig' with {'page':child, 'truncate':true} %}
-				{% endfor %}
+					{{ page.content }}
 
-				{% if config.plugins.pagination.enabled and collection.params.pagination %}
-					{% include 'partials/pagination.html.twig' with {'pagination':collection.params.pagination} %}
+					{% for child in page.children() %}
+						{% if child.children().count() > 0 %}
+								{% include 'partials/series.html.twig' with {'series': child} %}
+						{% else %}
+							{% include 'partials/summary.html.twig' with {'page': child} %}
+						{% endif %}
+					{% endfor %}
+				{% else %}
+					{% if page.content %}
+						<h1 class="collection-title">{{ page.title }}</h1>
+						{{ page.content }}
+					{% endif %}
+
+					{% for child in collection %}
+						{% include 'partials/summary.html.twig' with {'page':child, 'truncate':true} %}
+					{% endfor %}
+
+					{% if config.plugins.pagination.enabled and collection.params.pagination %}
+						{% include 'partials/pagination.html.twig' with {'pagination':collection.params.pagination} %}
+					{% endif %}
 				{% endif %}
 			</main>
 

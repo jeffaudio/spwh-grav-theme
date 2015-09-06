@@ -1,0 +1,21 @@
+{% import 'macros/cards.twig' as cards %}
+
+<div class="series">
+	<header>
+		<h1 class="title"><a href="{{ series.url }}">{{ series.title }}</a></h1>
+		<h3 class="subheading">
+			{{ series.children().last.date|date("M. d, Y") }} – {{ series.children().first.date|date("M. d, Y") }}
+		</h3>
+	</header>
+	{{ series.content }}
+	<ul class="posts">
+		{% for post in series.children().reverse() %}
+			<li>{{ cards.postcard(post) }}</li>
+		{% endfor %}
+	</ul>
+
+	<footer>
+		<p><a href="{{ series.url }}">View Series</a></p>
+		{% include 'partials/social.html.twig' %}
+	</footer>
+</div>

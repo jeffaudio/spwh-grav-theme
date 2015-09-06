@@ -1,0 +1,6 @@
+{% macro postcard(post) %}
+	<a class="post" href="{{ post.url }}" title="{{ post.title }}">
+		<img src="{% if post.media.images %}{{ post.media.images|first.cropZoom(500,350).url }}{% else %}{{ theme_url }}/images/logo-thumb.jpg{% endif %}" alt="{{ post.title }}" class="feature-image" />
+		<div class="title">{{ post.title|truncate(20) }}</div>
+	</a>
+{% endmacro %}
