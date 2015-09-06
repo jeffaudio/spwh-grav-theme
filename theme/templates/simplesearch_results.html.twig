@@ -1,12 +1,16 @@
+{% import 'macros/cards.twig' as cards %}
+
 {% embed 'partials/base.html.twig' %}
 	{% block content %}
 		<div class="row">
 			<main class="blog">
 				<h1 class="collection-title">Search Results</h1>
 
-				{% for page in search_results %}
-					{% include 'partials/summary.html.twig' with {'page':page, 'truncate':true} %}
-				{% endfor %}
+				<ul class="posts">
+					{% for page in search_results %}
+						<li>{{ cards.postcard(page, theme_url ~ '/images/logo-thumb.jpg') }}</li>
+					{% endfor %}	
+				</ul>
 
 				<p class="search-stats"><strong>{{ query }}</strong> matched {{ search_results.count }} {{ 'post'|pluralize(search_results.count) }}</p>
 			</main>
