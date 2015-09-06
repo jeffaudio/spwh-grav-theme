@@ -4,7 +4,7 @@
 	{% for related_path, score in related_pages %}
 		{% set related = grav['pages'].get(related_path) %}
 		{% if related %}
-			<li>{{ cards.postcard(related) }}</li>
+			<li>{{ cards.postcard(related, theme_url ~ '/images/logo-thumb.jpg') }}</li>
 		{% endif %}
 	{% endfor %}
 </ul>

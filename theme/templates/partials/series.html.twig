@@ -10,7 +10,7 @@
 	{{ series.content }}
 	<ul class="posts">
 		{% for post in series.children().reverse() %}
-			<li>{{ cards.postcard(post) }}</li>
+			<li>{{ cards.postcard(post, theme_url ~ '/images/logo-thumb.jpg') }}</li>
 		{% endfor %}
 	</ul>
 
