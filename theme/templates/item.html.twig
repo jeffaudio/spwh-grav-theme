@@ -1,14 +1,20 @@
 {% extends 'partials/base.html.twig' %}
 
+{% set isInSeries = page.parent().parent().title != 'Pages' %}
+
 {% block content %}
 	<div class="row">
 		<div class="small-12 columns">
-			<header>
+			<header class="post">
 				<h1 class="title"><a href="{{ page.url }}">{{ page.title }}</a></h1>
 				<h3 class="subheading">
 					{% if page.header.author %}By {{ page.header.author }} | {% endif %}
 					{{ page.date|date("M. d, Y") }}
 				</h3>
+
+				{% if isInSeries %}
+					<h3 class="subheading series">{{ page.parent().title }}</h3>
+				{% endif %}
 			</header>
 
 			<img class="feature-image" src="{{ page.media.images|first.url }}" />

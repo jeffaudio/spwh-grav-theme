@@ -2,23 +2,43 @@ header h1 a {
 	background-image: none;
 }
 
-article.post,.series {
-	header {
-		a { background-image: none; }
+header.post,.post header {
+	a { background-image: none; }
 		
-		.title {
-			margin: 0;
-			padding: 0;
-			font-weight: bold;
-			color: $title-color;
-			line-height: 1; //em
-			font-size: 2em;
-		}
+	.title {
+		margin: 0;
+		padding: 0;
+		font-weight: bold;
+		color: $title-color;
+		line-height: 1; //em
+	}
 
-		.subheading {
-			font-size: 1em;
-			color: $subheading-color;
-		}
+	.subheading {
+		color: $subheading-color;
+	}
+
+	margin: 0;
+}
+
+header.post {
+	.title { font-size: 3em; }
+	.subheading { 
+		font-size: 1.25em; 
+		float: left;
+		width: 60%
+	}
+	.series {
+		float: right;
+		width: 38%;
+		text-align: right;
+		margin: 0;
+	}
+}
+
+.post,.series {
+	header {
+		.title { font-size: 2em; }
+		.subheading { font-size: 1em; }
 	}
 
 	footer {
