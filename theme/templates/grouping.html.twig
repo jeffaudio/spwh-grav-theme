@@ -10,13 +10,12 @@
 				<h1 class="collection-title">{{ page.title|title }}</h1>
 				{{ page.content }}
 
-				{% set taxType = "category" %}
 				{% set taxlist = taxonomylist.get() %}
 				{% if taxlist %}
 					<ul class="series">
-    				{% for tax,value in taxlist[taxType] %}
+    				{% for tax,value in taxlist[page.header.grouping] %}
     					{% set title = tax|title %}
-    					{% set url = base_url ~ '/' ~ taxType ~ config.system.param_sep ~ tax|e('url') %}
+    					{% set url = base_url ~ '/' ~ page.header.grouping ~ config.system.param_sep ~ tax|e('url') %}
     					{% set posts = taxonomy.findTaxonomy({'category': tax})|randomize %}
 
     					{% set thumbUrl = theme_url ~ '/images/logo-thumb.jpg' %}
