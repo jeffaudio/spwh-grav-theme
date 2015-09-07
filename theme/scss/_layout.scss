@@ -64,7 +64,7 @@ ul.tags {
 	}
 }
 
-ul.posts {
+ul.posts,ul.series {
 	@extend .row;
 	list-style: none;
 
@@ -77,7 +77,7 @@ ul.posts {
 			float: left !important;
 		}
 
-		.post {
+		.post,.item {
 			$post-padding: 5px;
 
 			border: 1px solid $chambourd;
@@ -95,7 +95,44 @@ ul.posts {
 				margin-bottom: $post-padding;
 			}
 		}
+
+		.item {
+			.metadata {
+				margin: 5px 0;
+			}
+
+			.title,.count {
+				line-height: 1;
+			}
+
+			.title {
+				font-weight: bold;
+			}
+
+			.count {
+				margin-top: 1px;
+				color: $oyster-bay;
+				font-size: 0.9em;
+			}
+		}
 	}
+}
+
+ul.series {
+	@extend .posts;
+
+	li {
+		@extend .small-12;
+		@extend .medium-4;
+		@extend .columns;
+
+		&:last-child {
+			float: left !important;
+		}
+
+
+	}
+
 }
 
 body > footer {

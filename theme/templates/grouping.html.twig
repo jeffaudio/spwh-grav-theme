@@ -7,12 +7,13 @@
 	{% block content %}
 		<div class="row">
 			<main class="blog">
+				<h1 class="collection-title">{{ page.title|title }}</h1>
 				{{ page.content }}
 
 				{% set taxType = "category" %}
 				{% set taxlist = taxonomylist.get() %}
 				{% if taxlist %}
-					<ul class="posts">
+					<ul class="series">
     				{% for tax,value in taxlist[taxType] %}
     					{% set title = tax|title %}
     					{% set url = base_url ~ '/' ~ taxType ~ config.system.param_sep ~ tax|e('url') %}
@@ -24,10 +25,12 @@
     					{% endif %}
 
     					<li>
-    						<a class="post" href="{{ url }}" title="{{ title }}">
+    						<a class="item" href="{{ url }}" title="{{ title }}">
 									<img src="{{ thumbUrl }}" alt="{{ post.title }}" class="feature-image" />
-									<div class="title">{{ title|truncate(20) }}</div>
-									<div class="count">{{ posts.count }} {{ 'post'|pluralize(posts.count) }}</div>
+									<div class="metadata">
+										<div class="title">{{ title|truncate(20) }}</div>
+										<div class="count">{{ posts.count }} {{ 'post'|pluralize(posts.count) }}</div>
+									</div>
 								</a>
 							</li>
 						{% endfor %}
