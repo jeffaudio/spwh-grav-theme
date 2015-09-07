@@ -25,10 +25,11 @@
 					{% for child in page.children() %}
 						{% if child.children().count() > 0 %}
 								{% include 'partials/series.html.twig' with {'series': child} %}
-						{% else %}
+						{% elseif child.header.taxonomy %}
 							{% include 'partials/summary.html.twig' with {'page': child} %}
 						{% endif %}
 					{% endfor %}
+
 				{% else %}
 					{% if page.content %}
 						<h1 class="collection-title">{{ page.title }}</h1>
