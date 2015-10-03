@@ -7,7 +7,14 @@
 		
 		{% for paginate in pagination %}
 			{% set url = (base_url ~ pagination.params ~ paginate.url)|replace({'//':'/'}) %}
-			<li {% if paginate.isCurrent %}class="current"{% endif %}><a href="{{ url }}">{{ paginate.number }}</a></li>
+			
+			{% if paginate.isCurrent %}
+				<li class="current"><a href="{{ url }}">{{ paginate.number }}</a></li>
+			{% elseif paginate.isInDelta %}
+				<li><a href="{{ url }}">{{ paginate.number }}</a></li>
+			{% elseif paginate.isDeltaBorder %}
+				<li>…</li>
+			{% endif %}
 		{% endfor %}
 
 		{% set nextUrl =  (base_url ~ pagination.params ~ pagination.nextUrl)|replace({'//':'/'}) %}
