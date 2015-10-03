@@ -64,6 +64,10 @@ ul.tags {
 	}
 }
 
+ol {
+	margin-left: 2rem;
+}
+
 ul.posts,ul.series {
 	@extend .row;
 	list-style: none;
