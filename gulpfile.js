@@ -33,7 +33,7 @@ gulp.task('compile-sass', ['clean'], function() {
 		.pipe(gulp.dest(pkg.paths.dest.css));
 });
 
-gulp.task('default', ['minnify-css'], function() {
+gulp.task('default', ['minify-css'], function() {
 
 	return 
 		plug.notify({
