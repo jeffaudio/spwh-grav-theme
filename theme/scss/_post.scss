@@ -17,6 +17,15 @@ header.post,.post header,.series header {
 		line-height: 1; //em
 	}
 
+	.series-title {
+		font-size: 1.5em;
+		font-weight: bold;
+		color: $expressive-plum;
+		margin-top: 0;
+		margin-bottom: 0;
+
+	}
+
 	.subheading {
 		color: $subheading-color;
 	}
