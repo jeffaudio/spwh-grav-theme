@@ -10,11 +10,8 @@
 		height: $social-height;
 		display: inline-block;
 		margin-left: 0.5em;
-	 }	
-
-	.facebook a { background-image: url("../images/social/facebook.png"); }
-	.twitter a { background-image: url("../images/social/twitter.png"); }
-	.tumblr a { background-image: url("../images/social/tumblr.png"); }
+		background-size: 40px 25px;
+	}
 }
 
 .mobile-social {
