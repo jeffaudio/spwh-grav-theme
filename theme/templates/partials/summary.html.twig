@@ -1,6 +1,9 @@
 <article class="post">
 	<header>
 		<h1 class="title"><a href="{{ page.url }}">{{ page.title }}</a></h1>
+		{% if page.header.grouping %}
+			<h2 class="subheading series">{{ page.header.grouping }}</h2>
+		{% endif %}
 		<h3 class="subheading">
 			{% if page.header.author %}By {{ page.header.author }} | {% endif %}
 			{{ page.date|date("M. d, Y") }}
