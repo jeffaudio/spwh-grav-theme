@@ -22,7 +22,7 @@
 	</section>
 	
 	<footer>
-		<p><a href="{{ page.url }}">{% if page.summary.count == page.content.count %}View Post{% else %}Continue Reading{% endif %}</a></p>
+		<p><a href="{{ page.url }}">{% if page.summary == page.content %}View Post{% else %}Continue Reading{% endif %}</a></p>
 		{% include 'partials/social.html.twig' %}
 	</footer>
 </article>
