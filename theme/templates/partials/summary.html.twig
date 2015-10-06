@@ -2,7 +2,7 @@
 	<header>
 		<h1 class="title"><a href="{{ page.url }}">{{ page.title }}</a></h1>
 		{% if page.header.grouping %}
-			<h2 class="series-title">{{ page.header.grouping }}</h2>
+			<h2 class="series-title"><a href="{{ page.parent.url }}">{{ page.header.grouping }}</a></h2>
 		{% endif %}
 		<h3 class="subheading">
 			{% if page.header.author %}By {{ page.header.author }} | {% endif %}
