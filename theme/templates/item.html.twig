@@ -36,8 +36,11 @@
 					{% endif %}
 				</div>
 			{% else %}
-				<img class="feature-image" src="{{ page.media.images|first.url }}" />
-				{# {{ page.media.images|first.crop(0,250,1600,600).html("Feature Image", page.title, "feature-image") }} #}
+				<ul class="clearing-thumbs clearing-feature" data-clearing>
+					{% for image in page.media.images %}
+	  				<li {% if loop.first %}class="clearing-featured-img"{% endif %}><a href="{{ image.url }}"><img {% if loop.first %}class="feature-image"{% endif %} src="{{ image.url }}"></a></li>
+					{% endfor %}
+				</ul>
 			{% endif %}			
 		</div>
 	</div>

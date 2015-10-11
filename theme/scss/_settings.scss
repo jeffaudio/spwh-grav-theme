@@ -41,7 +41,7 @@
 // We use these to control various global styles
 // $body-bg: #fff;
 // $body-font-color: #222;
-$body-font-family: source-sans-pro, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: Avenir, source-sans-pro, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -63,7 +63,7 @@ $info-color: $raindrop;
 
 
 // We use these to make sure border radius matches unless we want it different.
-// $global-radius: 3px;
+$global-radius: 5px;
 // $global-rounded: 1000px;
 
 // We use these to control inset shadow shiny edges and depressions.
@@ -119,7 +119,7 @@ $info-color: $raindrop;
 // $include-html-type-classes: $include-html-classes;
 
 // We use these to control header font styles
-$header-font-family: merriweather, serif;
+$header-font-family: merriweather,palatino,book antiqua,sans-serif;
 // $header-font-weight: normal;
 // $header-font-style: normal;
 $header-font-color: $chambourd;

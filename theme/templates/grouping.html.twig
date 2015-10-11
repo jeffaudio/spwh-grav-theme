@@ -15,23 +15,25 @@
 					<ul class="series">
     				{% for tax,value in taxlist[page.header.grouping] %}
     					{% set title = tax|title %}
-    					{% set url = base_url ~ '/' ~ page.header.grouping ~ config.system.param_sep ~ tax|e('url') %}
-    					{% set posts = taxonomy.findTaxonomy({'category': tax})|randomize %}
+    					{% set url = page.parent.url ~ '/' ~ page.header.grouping ~ config.system.param_sep ~ tax|e('url') %}
+    					{% set posts = taxonomy.findTaxonomy({'category': tax, 'site': page.taxonomy.site})|randomize %}
+    					{% if posts.count > 0 %}
 
-    					{% set thumbUrl = theme_url ~ '/images/logo-thumb.jpg' %}
-    					{% if posts|first.media.images %}
-    						{% set thumbUrl = posts|first.media.images|first.cropZoom(500,350).url %}
-    					{% endif %}
+	    					{% set thumbUrl = theme_url ~ '/images/logo-thumb.jpg' %}
+	    					{% if posts|first.media.images %}
+	    						{% set thumbUrl = posts|first.media.images|first.cropZoom(500,350).url %}
+	    					{% endif %}
 
-    					<li>
-    						<a class="item" href="{{ url }}" title="{{ title }}">
-									<img src="{{ thumbUrl }}" alt="{{ post.title }}" class="feature-image" />
-									<div class="metadata">
-										<div class="title">{{ title|truncate(20) }}</div>
-										<div class="count">{{ posts.count }} {{ 'post'|pluralize(posts.count) }}</div>
-									</div>
-								</a>
-							</li>
+	    					<li>
+	    						<a class="item" href="{{ url }}" title="{{ title }}">
+										<img src="{{ thumbUrl }}" alt="{{ post.title }}" class="feature-image" />
+										<div class="metadata">
+											<div class="title">{{ title|truncate(20) }}</div>
+											<div class="count">{{ posts.count }} {{ 'post'|pluralize(posts.count) }}</div>
+										</div>
+									</a>
+								</li>
+							{% endif %}
 						{% endfor %}
 					</ul>
 				{% endif %}

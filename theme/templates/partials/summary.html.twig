@@ -8,6 +8,13 @@
 			{% if page.header.author %}By {{ page.header.author }} | {% endif %}
 			{{ page.date|date("M. d, Y") }}
 		</h3>
+		{% if page.taxonomy.category %}
+			<ul class="categories">
+				{% for category in page.taxonomy.category %}
+					<li class="category"><a href="{{  page.parent.url }}/category:{{ category }}" rel="category">{{ category }}</a></li>
+				{% endfor %}
+			</ul>
+		{% endif %}
 	</header>
 
 	<div {% if page.header.youtube or page.header.soundcloud %}class="flex-video"{% endif %}>
@@ -20,12 +27,13 @@
 		{% endif %}
 	</div>
 
+
 	<section class="content">
 		{{ page.summary }}
 	</section>
 	
 	<footer>
-		<p><a href="{{ page.url }}">{% if page.summary == page.content %}View Post{% else %}Continue Reading{% endif %}</a></p>
+		<p><a href="{{ page.url }}">{% if page.summary == page.content %}View Post{% else %}Continue Reading…{% endif %}</a></p>
 		{% include 'partials/social.html.twig' %}
 	</footer>
 </article>

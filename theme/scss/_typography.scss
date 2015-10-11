@@ -1,11 +1,11 @@
 
-body {
-	font-family: source-sans-pro,calibri,candara,arial,sans-serif;
-}
+//body {
+//	font-family: source-sans-pro,calibri,candara,arial,sans-serif;
+//}
 
-h1,h2,h3,h4,h5,h6 {
-	font-family: merriweather,palatino,book antiqua,sans-serif;
-}
+//h1,h2,h3,h4,h5,h6 {
+//	font-family: merriweather,palatino,book antiqua,sans-serif;
+//}
 
 p {
 	margin-bottom: 1em;
@@ -15,14 +15,16 @@ a {
 	$underline-start: 11%;
 	$underline-stop: 16%;
 
-	background-image: linear-gradient(to top, 
-		transparent $underline-start, 
-		$underline-color $underline-start, 
-		$underline-color $underline-stop, 
-		transparent $underline-stop);
+	border-bottom: 1px dotted $underline-color;
+	//background-image: linear-gradient(to top, 
+	//	transparent $underline-start, 
+	//	$underline-color $underline-start, 
+	//	$underline-color $underline-stop, 
+	//	transparent $underline-stop);
 
 	&:hover {
-		background-color: $flattering-peach;
+		color: $raindrop;
+		// background-color: $flattering-peach;
 	}
 }
 

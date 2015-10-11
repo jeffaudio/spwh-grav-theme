@@ -22,7 +22,7 @@
 
 					{{ page.content }}
 
-					{% for child in page.children() %}
+					{% for child in page.collection %}
 						{% if child.children().count() > 0 %}
 								{% include 'partials/series.html.twig' with {'series': child} %}
 						{% elseif child.header.taxonomy %}

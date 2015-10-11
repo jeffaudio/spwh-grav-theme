@@ -1,4 +1,5 @@
 header h1 a {
+	border-bottom: none;
 	background-image: none;
 }
 
@@ -7,7 +8,10 @@ div.feature-image img.feature-image {
 }
 
 header.post,.post header,.series header {
-	a { background-image: none; }
+	a { 
+		border-bottom: none;
+		background-image: none;
+	}
 		
 	.title {
 		margin: 0;
@@ -52,10 +56,40 @@ header.post {
 	}
 }
 
+.categories,.tags {
+	@extend .inline-list;
+	margin-left: 0;
+	margin-bottom: 0.5em;
+
+	li.category {
+		margin-left: 0;
+	}
+	li.category,li.tag {
+		margin-right: 0.5em;
+		padding: 0.15em 0.5em;
+		border-radius: $global-radius;
+		color: $chambourd;
+		border: 1px solid $chambourd;
+
+		
+
+		&:hover {
+			a { color: $chambourd; }
+			background-color: $flattering-peach;
+		}
+	}
+}
+
+
+
 .post,.series {
 	header {
 		.title { font-size: 2em; }
 		.subheading { font-size: 1em; }
+	}
+
+	.feature-image {
+		border-radius: $global-radius;
 	}
 
 	footer {
@@ -65,7 +99,9 @@ header.post {
 		line-height: $social-height;
 
 		a {
+			border-bottom: none;
 			background-image: none;
+			font-weight: bold;
 		}
 
 		p {
