@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% block head %}
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+	<title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+	
+	{% if header.description %}
+		<meta name="description" content="{{ header.description }}">
+	{% else %}
+		<meta name="description" content="{{ site.description }}">
+	{% endif %}
+	
+	<meta name="keywords" content="dogs, agility, dog training, eskie, american eskimo, dog agility, diy, home renovation" />
+
+	<!-- 
+	<link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png') }}" />
+	<link rel="canonical" href="{{ page.url(true, true) }}" />
+	-->
+	
+	<link href="{{ theme_url }}/css/style.css" type="text/css" rel="stylesheet" />
+
+	{% endblock head %}
+</head>
+
+<body>
+{% include 'partials/header.html.twig' %}
+
+{% block content %}
+{% endblock %}
+
+<!--
+<script src="{{ theme_url }}/bower_components/modernizr/modernizr.js"></script>
+<script src="{{ theme_url }}/bower_components/jquery/dist/jquery.js"></script>
+<script src="{{ theme_url }}/bower_components/foundation/js/foundation/foundation.js"></script>
+<script src="{{ theme_url }}/bower_components/foundation/js/foundation/foundation.clearing.js"></script>
+<script src="{{ theme_url }}/bower_components/foundation/js/foundation/foundation.interchange.js"></script>
+<script src="{{ theme_url }}/bower_components/foundation/js/foundation/foundation.topbar.js"></script>
+-->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js"></script>
+<!-- <script async src=http://use.edgefonts.net/source-sans-pro;merriweather.js></script> -->
+<script>
+	(function() {
+		$(document).foundation();
+
+		$(document).ready(function() {
+			var input = $(".search input[type='text']");
+			input.on('keypress', function(evt) {
+				if (evt.which == 13) {
+					evt.preventDefault();
+					search(input.val());
+				}
+			});
+
+			var btn = $(".search .button");
+			btn.click(function() {
+				evt.preventDefault();
+				search(input.val());
+			});
+		});
+
+		function search(text) {
+			var url = "{{ base_url }}{{ config.plugins.simplesearch.route }}/query";
+			window.location.href = url + '{{ config.system.param_sep }}' + text;
+		}
+	})();
+</script>
+</body>
+</html>

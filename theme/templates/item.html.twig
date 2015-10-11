@@ -1,0 +1,90 @@
+{% extends 'partials/base.html.twig' %}
+
+{% set series = page.parent() %}
+{% set taxonomyRoot = uri.rootUrl(true) ~ '/' ~ page.taxonomy.site|first %}
+
+
+{% block content %}
+	<div class="row">
+		<div class="small-12 columns">
+			<header class="post">
+				<h1 class="title"><a href="{{ page.url }}">{{ page.title }}</a></h1>
+				<h3 class="subheading">
+					{% if page.header.author %}By {{ page.header.author }} | {% endif %}
+					{{ page.date|date("M. d, Y") }}
+				</h3>
+
+				{% if isInSeries %}
+					<h3 class="subheading series"><a href="{{ page.parent.url }}">{{ series.title }}</a></h3>
+				{% endif %}
+			</header>
+		</div>
+		<div class="small-12 columns feature-image">
+
+			{% if page.header.youtube or page.header.soundcloud %}
+				<div class="flex-video">
+					{% if page.header.youtube %}
+						<iframe width="720" height="405" src="{{ page.header.youtube }}?showinfo=0" frameborder="0" allowfullscreen></iframe>
+					{% elseif page.header.soundcloud %}
+						<iframe width="100%" height="403" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{ page.header.soundcloud }}&amp;auto_play=false&amp;hide_related=true&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true&amp;buying=false"></iframe>
+					{% endif %}
+				</div>
+			{% else %}
+				<ul class="clearing-thumbs clearing-feature" data-clearing>
+					{% for image in page.media.images %}
+	  				<li {% if loop.first %}class="clearing-featured-img"{% endif %}><a href="{{ image.url }}"><img {% if loop.first %}class="feature-image"{% endif %} src="{{ image.url }}"></a></li>
+					{% endfor %}
+				</ul>
+			{% endif %}			
+		</div>
+	</div>
+
+	<div class="row">
+		<main class="blog">
+			<article class="post">
+				<section class="content">
+					{{ page.content }}
+				</section>
+
+				{% if page.heading.grouping %}
+					<div class="pagination-centered">
+						<ul class="pagination" role="menubar" aria-label="Pagination">
+							{% if not page.isFirst %}
+								<li><a href="{{ page.nextSibling.url }}">&laquo; {{ page.nextSibling.title }}</a></li>
+							{% endif %}	
+
+							{% if not page.isLast %}
+								<li><a href="{{ page.prevSibling.url }}">{{ page.prevSibling.title }} &raquo;</a></li>
+							{% endif %}			
+						</ul>
+					</div>
+				{% endif %}
+	
+				<footer>
+					{% if page.taxonomy.category %}
+						<p>Categories: {% for category in page.taxonomy.category %}<a href="{{ taxonomyRoot }}/category:{{ category }}" rel="category">{{ category }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</p>
+					{% endif %}
+					{% include 'partials/social.html.twig' %}
+				</footer>
+
+				{% if page.taxonomy.tag %}
+					<ul class="tags">
+						{% for tag in page.taxonomy.tag %}
+							<li class="tag"><a href="{{ taxonomyRoot }}/tag:{{ tag }}" rel="tag" class="boxed-link"><div>{{ tag }}</div></a></li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</article>
+
+			{% if config.plugins.relatedpages.enabled and related_pages|length > 0 %}
+    		{% include 'partials/related.html.twig' %}
+			{% endif %}
+		</main>
+
+		<section class="sidebar">
+			{% include 'partials/sidebar.html.twig' %}
+		</section>
+	</div>
+
+	{% include 'partials/footer.html.twig' %}
+{% endblock content %}

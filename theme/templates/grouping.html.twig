@@ -1,0 +1,49 @@
+{% import 'macros/cards.twig' as cards %}
+
+{% embed 'partials/base.html.twig' %}
+
+	{% set collection = page.collection() %}
+
+	{% block content %}
+		<div class="row">
+			<main class="blog">
+				<h1 class="collection-title">{{ page.title|title }}</h1>
+				{{ page.content }}
+
+				{% set taxlist = taxonomylist.get() %}
+				{% if taxlist %}
+					<ul class="series">
+    				{% for tax,value in taxlist[page.header.grouping] %}
+    					{% set title = tax|title %}
+    					{% set url = page.parent.url ~ '/' ~ page.header.grouping ~ config.system.param_sep ~ tax|e('url') %}
+    					{% set posts = taxonomy.findTaxonomy({'category': tax, 'site': page.header.site})|randomize %}
+    					{% if posts.count > 0 %}
+
+	    					{% set thumbUrl = theme_url ~ '/images/logo-thumb.jpg' %}
+	    					{% if posts|first.media.images %}
+	    						{% set thumbUrl = posts|first.media.images|first.cropZoom(500,350).url %}
+	    					{% endif %}
+
+	    					<li>
+	    						<a class="item" href="{{ url }}" title="{{ title }}">
+										<img src="{{ thumbUrl }}" alt="{{ post.title }}" class="feature-image" />
+										<div class="metadata">
+											<div class="title">{{ title|truncate(20) }}</div>
+											<div class="count">{{ posts.count }} {{ 'post'|pluralize(posts.count) }}</div>
+										</div>
+									</a>
+								</li>
+							{% endif %}
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</main>
+
+			<section class="sidebar">
+				{% include 'partials/sidebar.html.twig' %}
+			</section>
+		</div>
+
+		{% include 'partials/footer.html.twig' %}
+	{% endblock content %}
+{% endembed %}

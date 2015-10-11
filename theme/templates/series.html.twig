@@ -1,0 +1,68 @@
+{% import 'macros/cards.twig' as cards %}
+
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+	<div class="row">
+		<div class="small-12 columns">
+			<header class="post">
+				<h1 class="title"><a href="{{ page.url }}">{{ page.title }}</a></h1>
+				<h3 class="subheading">
+					{% if page.header.author %}By {{ page.header.author }} | {% endif %}
+					{{ page.children().first.date|date("M. d, Y") }} – {{ page.children().last.date|date("M. d, Y") }}
+				</h3>
+			</header>
+		</div>
+		<div class="small-12 columns feature-image">
+			<img class="feature-image" src="{{ page.media.images|first.url }}" />
+		</div>
+	</div>
+
+	<div class="row">
+		<main class="blog">
+			<article class="series">
+				<section class="content">
+					{{ page.content }}
+				</section>
+
+				<ul class="posts">
+					{% for post in page.children() %}
+						{% if post.header.grouping %}
+							<li>{{ cards.postcard(post, theme_url ~ '/images/logo-thumb.jpg') }}</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+	
+				<footer>
+						<p>Categories: 
+					{% if page.taxonomy.category %}
+						{% for category in page.taxonomy.category %}<a href="{{ taxonomyRoot }}/category:{{ category }}" rel="category">{{ category }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
+					{% else %}
+						None
+					{% endif %}
+						</p>
+
+					{% include 'partials/social.html.twig' %}
+				</footer>
+
+				{% if page.taxonomy.tag %}
+					<ul class="tags">
+						{% for tag in page.taxonomy.tag %}
+							<li class="tag"><a href="{{ taxonomyRoot }}/tag:{{ tag }}" rel="tag">{{ tag }}</a></li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</article>
+
+			{% if config.plugins.relatedpages.enabled and related_pages|length > 0 %}
+    		{% include 'partials/related.html.twig' %}
+			{% endif %}
+		</main>
+
+		<section class="sidebar">
+			{% include 'partials/sidebar.html.twig' %}
+		</section>
+	</div>
+
+	{% include 'partials/footer.html.twig' %}
+{% endblock content %}

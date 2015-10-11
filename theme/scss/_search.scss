@@ -1,0 +1,12 @@
+form.search {
+	$border-radius-value: $global-radius;
+
+	input {
+		border-radius: $border-radius-value 0 0 $border-radius-value;
+	}
+
+	.button {
+		padding: 0;
+		border-radius: 0 $border-radius-value $border-radius-value 0;
+	}
+}

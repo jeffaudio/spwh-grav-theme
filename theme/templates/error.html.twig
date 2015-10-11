@@ -1,0 +1,28 @@
+{% embed 'partials/base.html.twig' %}
+
+	{% block content %}
+		<div class="row">
+			<main class="small-12 columns">
+				<div class="text-center">
+					<h2>Looks like something went wrong.</h2>
+
+					{{ page.content }}
+
+					<div class="row">
+						<div class="small-12 medium-10 large-8 medium-offset-1 large-offset-2 columns">
+							{% include 'partials/search.html.twig' %}
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="small-12 columns">
+							<div class="ad large"></div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		{% include 'partials/footer.html.twig' %}
+	{% endblock content %}
+{% endembed %}

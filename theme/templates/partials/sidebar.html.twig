@@ -1,0 +1,31 @@
+{% include 'partials/search.html.twig' %}
+
+{% if page.header.blog_url %}
+	{% set blog_url = page.header.blog_url %}
+{% elseif page.header.site %}
+	{% set blog_url = page.header.site %}
+{% else %}
+	{% set blog_url = page.taxonomy.site|first %}
+{% endif %}
+
+<div class="row">
+	<div class="small-12 columns">
+			<a href="{{ uri.rootUrl() }}/{{ blog_url }}/categories" class="boxed-link"><h5 class="text-center">View Categories</h5></a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="small-12 columns">
+		<div class="ad square"></div>
+	</div>
+</div>
+
+<div class="hide-for-medium">
+<iframe width='220' height='1101' src='http://iconosquare.com/widget.php?choice=myfeed&username=softpuppywarmhouse&show_infos=true&linking=statigram&width=220&height=1101&mode=grid&layout_x=1&layout_y=5&padding=10&photo_border=false&background=FFFFFF&text=777777&widget_border=true&radius=5&border-color=DDDDDD&user_id=316217337&time=1439435405902' allowTransparency='true' frameborder='0' scrolling='no' style='border:none; overflow:hidden; width:220px; height:1101px;'></iframe>
+</div>
+
+<div class="row">
+	<div class="small-12 columns">
+		<div class="ad skyscraper"></div>
+	</div>
+</div>

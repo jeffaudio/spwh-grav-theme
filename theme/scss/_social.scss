@@ -1,0 +1,42 @@
+.social {
+	float: right;
+
+	.social-link {
+		display: inline;
+
+	}
+
+	.social-link a { 
+		width: 40px;
+		height: $social-height;
+		display: inline-block;
+		margin-left: 0.5em;
+		background-size: 40px 25px;
+		border-radius: $global-radius;
+	}
+}
+
+.mobile-social {
+	@extend .show-for-small-only;
+	text-align: center;
+	
+	ul {
+		list-style: none;
+		margin-left: 0;
+
+		li {
+			margin: 0 10px;
+			font-size: 2em;
+			display: inline-block;
+		}
+	}
+
+	a:hover { background: none; }
+
+	.fi-social-facebook { color: $facebook-blue; }
+	.fi-social-twitter { color: $twitter-blue; }
+	.fi-social-tumblr { color: $tumblr-blue; }
+	.fi-social-instagram { color: $instagram-brown; }
+	.fi-social-youtube { color: $youtube-red; }
+	.fi-social-pinterest { color: $pinterest-red; }
+}

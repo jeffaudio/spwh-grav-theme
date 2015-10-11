@@ -1,0 +1,25 @@
+{
+  "name": "spwh-grav-theme",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jeffaudio/spwh-grav-theme",
+  "authors": [
+    "jeffaudio <hentschel.jeff@gmail.com>"
+  ],
+  "description": "SoftPuppyWarmHouse Grav CMS theme",
+  "keywords": [
+    "theme",
+    "grav",
+    "html5"
+  ],
+  "license": "GPL v3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.5.2"
+  }
+}
