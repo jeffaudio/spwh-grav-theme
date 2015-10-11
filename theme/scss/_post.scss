@@ -7,6 +7,10 @@ div.feature-image img.feature-image {
 	margin-bottom: 1em;
 }
 
+li.clearing-featured-img {
+	margin-right: 0;
+}
+
 header.post,.post header,.series header {
 	a { 
 		border-bottom: none;
@@ -61,22 +65,14 @@ header.post {
 	margin-left: 0;
 	margin-bottom: 0.5em;
 
-	li.category {
-		margin-left: 0;
+	li.tag {
+		&:first-child { margin-left: 1.375rem; }
+		margin-right: 0;
 	}
+
 	li.category,li.tag {
+		margin-left: 0;
 		margin-right: 0.5em;
-		padding: 0.15em 0.5em;
-		border-radius: $global-radius;
-		color: $chambourd;
-		border: 1px solid $chambourd;
-
-		
-
-		&:hover {
-			a { color: $chambourd; }
-			background-color: $flattering-peach;
-		}
 	}
 }
 

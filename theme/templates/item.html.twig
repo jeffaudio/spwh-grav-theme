@@ -1,13 +1,7 @@
 {% extends 'partials/base.html.twig' %}
 
 {% set series = page.parent() %}
-{% set isInSeries = series.parent().title != 'Pages' %}
-
-{% if isInSeries %}
-	{% set taxonomyRoot = series.parent.url %}
-{% else %}
-	{% set taxonomyRoot = page.parent.url %}
-{% endif %}
+{% set taxonomyRoot = uri.rootUrl(true) ~ '/' ~ page.taxonomy.site|first %}
 
 
 {% block content %}
@@ -52,7 +46,7 @@
 					{{ page.content }}
 				</section>
 
-				{% if isInSeries %}
+				{% if page.heading.grouping %}
 					<div class="pagination-centered">
 						<ul class="pagination" role="menubar" aria-label="Pagination">
 							{% if not page.isFirst %}
@@ -76,7 +70,7 @@
 				{% if page.taxonomy.tag %}
 					<ul class="tags">
 						{% for tag in page.taxonomy.tag %}
-							<li class="tag"><a href="{{ taxonomyRoot }}/tag:{{ tag }}" rel="tag">{{ tag }}</a></li>
+							<li class="tag"><a href="{{ taxonomyRoot }}/tag:{{ tag }}" rel="tag" class="boxed-link"><div>{{ tag }}</div></a></li>
 						{% endfor %}
 					</ul>
 				{% endif %}

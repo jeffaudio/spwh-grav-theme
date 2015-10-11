@@ -25,6 +25,15 @@ body > header {
 	}
 }
 
+span.network {
+	&.facebook a:hover { color: $facebook-blue; }
+	&.twitter a:hover { color: $twitter-blue; }
+	&.tumblr a:hover { color: $tumblr-blue; }
+	&.youtube a:hover { color: $youtube-red; }
+	&.pinterest a:hover { color: $pinterest-red; }
+	
+}
+
 .networks {
 	z-index: 999;
 	text-align: center;
@@ -46,6 +55,22 @@ body > header {
 		&:hover {
 			color: $raindrop;
 		}
+	}
+}
+
+a.boxed-link {
+	border: none;
+
+	&:hover { color: $chambourd; }
+
+	* {
+		border: 1px solid $chambourd;
+		border-radius: $global-radius;
+		padding: 0.15em 0.5em;
+		color: $chambourd;
+		font-family: $body-font-family;
+
+		&:hover { background: $flattering-peach; }
 	}
 }
 
@@ -84,8 +109,7 @@ ul.tags {
 	color: $expressive-plum;
 
 	.tag {
-		a:before { content: '#'; }
-		&:first-child { margin-left: 0; }
+		div:before { content: '#'; }
 	}
 
 	> li > a {

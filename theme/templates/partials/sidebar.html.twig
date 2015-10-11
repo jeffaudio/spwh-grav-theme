@@ -1,5 +1,19 @@
 {% include 'partials/search.html.twig' %}
 
+{% if page.header.blog_url %}
+	{% set blog_url = page.header.blog_url %}
+{% elseif page.header.site %}
+	{% set blog_url = page.header.site %}
+{% else %}
+	{% set blog_url = page.taxonomy.site|first %}
+{% endif %}
+
+<div class="row">
+	<div class="small-12 columns">
+			<a href="{{ uri.rootUrl() }}/{{ blog_url }}/categories" class="boxed-link"><h5 class="text-center">View Categories</h5></a>
+	</div>
+</div>
+
 <div class="row">
 	<div class="small-12 columns">
 		<div class="ad square"></div>

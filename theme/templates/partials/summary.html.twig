@@ -11,7 +11,7 @@
 		{% if page.taxonomy.category %}
 			<ul class="categories">
 				{% for category in page.taxonomy.category %}
-					<li class="category"><a href="{{  page.parent.url }}/category:{{ category }}" rel="category">{{ category }}</a></li>
+					<li class="category"><a class="boxed-link" href="{{  blog.url }}/category:{{ category }}" rel="category"><div>{{ category }}</div></a></li>
 				{% endfor %}
 			</ul>
 		{% endif %}

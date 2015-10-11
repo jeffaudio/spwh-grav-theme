@@ -4,6 +4,8 @@
 	{% set base_url = page.url %}
 	{% set feed_url = base_url %}
 
+
+
 	{% if base_url == '/' %}
 	{% set base_url = '' %}
 	{% endif %}
@@ -13,6 +15,7 @@
 	{% endif  %}
 
 	{% block content %}
+
 		<div class="row">
 			<main class="blog">
 				{% if uri.params and not uri.param('page') %}
@@ -22,12 +25,20 @@
 
 					{{ page.content }}
 
+					{% set groups = [] %}
+
 					{% for child in page.collection %}
-						{% if child.children().count() > 0 %}
-								{% include 'partials/series.html.twig' with {'series': child} %}
-						{% elseif child.header.taxonomy %}
-							{% include 'partials/summary.html.twig' with {'page': child} %}
-						{% endif %}
+
+							{% if child.header.grouping %}
+								{% set series = child.parent() %}
+								{% if series.title not in groups %}
+									{% include 'partials/series.html.twig' with {'series': series, 'blog': page} %}
+									{% set groups = groups|merge([series.title]) %}
+								{% endif %}
+							{% elseif child.header.taxonomy %}
+								{% include 'partials/summary.html.twig' with {'page': child, 'blog': page} %}
+							{% endif %}
+						
 					{% endfor %}
 
 				{% else %}
@@ -37,7 +48,7 @@
 					{% endif %}
 
 					{% for child in collection %}
-						{% include 'partials/summary.html.twig' with {'page':child, 'truncate':true} %}
+						{% include 'partials/summary.html.twig' with {'page':child, 'blog':page} %}
 					{% endfor %}
 
 					{% if config.plugins.pagination.enabled and collection.params.pagination %}

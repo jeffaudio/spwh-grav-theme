@@ -30,8 +30,11 @@
 					{% endfor %}
 					<li class="networks sticky show-for-small">
 						{% for network, url in site.social %}
-							<span class="network"><a href="{{ url }}"><span class="fi-social-{{ network }}"></span></a></span>
+							<span class="network {{ network }}"><a href="{{ url }}"><span class="fi-social-{{ network }}"></span></a></span>
 						{% endfor %}
+						{% if config.plugins.feed.enabled %}
+							<span class="network rss"><a href="{{ feed_url }}.rss"><span class="fi-rss"></span></a></span>
+						{% endif %}
 					</li>
 
 				</ul>

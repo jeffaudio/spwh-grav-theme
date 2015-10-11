@@ -27,7 +27,9 @@
 
 				<ul class="posts">
 					{% for post in page.children() %}
-						<li>{{ cards.postcard(post, theme_url ~ '/images/logo-thumb.jpg') }}</li>
+						{% if post.header.grouping %}
+							<li>{{ cards.postcard(post, theme_url ~ '/images/logo-thumb.jpg') }}</li>
+						{% endif %}
 					{% endfor %}
 				</ul>
 	

@@ -10,7 +10,9 @@
 	{{ series.content }}
 	<ul class="posts">
 		{% for post in series.children().reverse() %}
-			<li>{{ cards.postcard(post, theme_url ~ '/images/logo-thumb.jpg') }}</li>
+			{% if post.header.grouping %}
+				<li>{{ cards.postcard(post, theme_url ~ '/images/logo-thumb.jpg') }}</li>
+			{% endif %}
 		{% endfor %}
 	</ul>
 
