@@ -42,7 +42,7 @@
 -->
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js"></script>
 <!-- <script async src=http://use.edgefonts.net/source-sans-pro;merriweather.js></script> -->
 <script>
@@ -59,7 +59,7 @@
 			});
 
 			var btn = $(".search .button");
-			btn.click(function() {
+			btn.click(function(evt) {
 				evt.preventDefault();
 				search(input.val());
 			});
