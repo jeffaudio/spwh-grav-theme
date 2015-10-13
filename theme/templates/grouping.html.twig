@@ -16,7 +16,12 @@
     				{% for tax,value in taxlist[page.header.grouping] %}
     					{% set title = tax|title %}
     					{% set url = page.parent.url ~ '/' ~ page.header.grouping ~ config.system.param_sep ~ tax|e('url') %}
-    					{% set posts = taxonomy.findTaxonomy({'category': tax, 'site': page.header.site})|randomize %}
+    					{% if page.header.site %}
+    						{% set postFilter = {'category': tax, 'site': page.header.site} %}
+    					{% else %}
+    						{% set postFilter = {'category': tax} %}
+    					{% endif %}
+    					{% set posts = taxonomy.findTaxonomy(postFilter)|randomize %}
     					{% if posts.count > 0 %}
 
 	    					{% set thumbUrl = theme_url ~ '/images/logo-thumb.jpg' %}

@@ -20,8 +20,12 @@
 				</ul>
 
 				<ul class="right">
+					{% set site = uri.paths|first %}
+					{% if site == '' %}{% set site = "softpuppy" %}{% endif %}
+
 					{% for page in pages.children.visible %}
-						{% set pageClass = (page.active or page.activeChild) ? 'active' : '' %}
+
+						{% set pageClass = (site == page.slug) ? 'active' : '' %}
 
 						<li class="{{ pageClass }}"><a href="{{ page.url }}">
 							{% if page.header.icon %}<i class="fi-{{ page.header.icon }}"></i>{% endif %}
@@ -50,5 +54,7 @@
 </header>
 
 <div class="row">
-	<div class="ad landscape"></div>
+	<div class="ad landscape">
+
+	</div>
 </div>
