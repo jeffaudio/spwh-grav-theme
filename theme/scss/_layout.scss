@@ -5,6 +5,7 @@ body > header {
 	display: block;
 	box-shadow: inset 0 -5px 5px -5px #000;
 	text-align: left;
+	margin-bottom: 1em;
 
 	.logo {
 		height: 175px;
@@ -70,8 +71,6 @@ a.boxed-link {
 
 	* {
 		border: 1px solid $chambourd;
-		margin: 0;
-		margin-bottom: 1em;
 		border-radius: $global-radius;
 		padding: 0.15em 0.5em;
 		color: $chambourd;
@@ -235,7 +234,7 @@ body > footer {
 /* Ad placeholder for dev */
 .ad {
 	background-color: rgba(0,1,0,0.25);
-	margin: 1em 0;
+	margin: 0;
 	border-radius: $global-radius;
 
 	&.landscape {

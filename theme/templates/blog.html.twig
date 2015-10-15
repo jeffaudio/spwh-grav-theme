@@ -7,15 +7,14 @@
 
 
 	{% if base_url == '/' %}
-	{% set base_url = '' %}
+		{% set base_url = '' %}
 	{% endif %}
 
 	{% if base_url == base_url_relative %}
-	{% set feed_url = base_url~'/'~page.slug %}
+		{% set feed_url = base_url~'/'~page.slug %}
 	{% endif  %}
 
 	{% block content %}
-
 		<div class="row">
 			<main class="blog">
 				{% if uri.param('category') or uri.param('tag') %}

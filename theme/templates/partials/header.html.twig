@@ -1,4 +1,5 @@
-{% set feed_url = blog.url == '/' or blog.url == base_url_relative ? (base_url_relative~'/'~blog.slug) : blog.url %}
+{% set siteName = uri.paths|first|default('softpuppy') %}
+{% set feed_url = uri.rootUrl ~ '/' ~ siteName %}
 
 <header class="header">
 	
@@ -20,8 +21,7 @@
 				</ul>
 
 				<ul class="right">
-					{% set site = uri.paths|first %}
-					{% if site == '' %}{% set site = "softpuppy" %}{% endif %}
+					
 
 					{% for page in pages.children.visible %}
 
@@ -53,7 +53,7 @@
 	
 </header>
 
-<div class="row">
+<div class="row module">
 	<div class="ad landscape">
 				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- Banner top --3>

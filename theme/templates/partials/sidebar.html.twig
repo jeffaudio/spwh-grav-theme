@@ -1,6 +1,16 @@
-{% include 'partials/search.html.twig' %}
 
-<div class="row">
+<div class="module">
+	{% include 'partials/search.html.twig' %}
+</div>
+
+<div class="row module">
+	<div class="small-12 columns">
+		<h4 class="title">Popular Categories</h4>
+		{% include 'partials/popular_tags.html.twig' %}
+	</div>
+</div>
+
+<div class="row module">
 	<div class="small-12 columns">
 		<div class="ad square">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -17,23 +27,13 @@
 	</div>
 </div>
 
-<div class="row">
+<div class="row module hide-for-medium-down">
 	<div class="small-12 columns">
-			<a href="{{ uri.rootUrl() }}/tags" class="boxed-link"><h5>View Tags</h5></a>
+		<iframe width='220' height='1101' src='http://iconosquare.com/widget.php?choice=myfeed&username=softpuppywarmhouse&show_infos=true&linking=statigram&width=220&height=1101&mode=grid&layout_x=1&layout_y=5&padding=10&photo_border=false&background=FFFFFF&text=777777&widget_border=true&radius=5&border-color=DDDDDD&user_id=316217337&time=1439435405902' allowTransparency='true' frameborder='0' scrolling='no' style='border:none; overflow:hidden; width:220px; height:1101px;'></iframe>
 	</div>
 </div>
 
-<div class="row">
-	<div class="small-12 columns">
-			<a href="{{ uri.rootUrl() }}/categories" class="boxed-link"><h5>View Categories</h5></a>
-	</div>
-</div>
-
-<div class="hide-for-medium-down">
-<iframe width='220' height='1101' src='http://iconosquare.com/widget.php?choice=myfeed&username=softpuppywarmhouse&show_infos=true&linking=statigram&width=220&height=1101&mode=grid&layout_x=1&layout_y=5&padding=10&photo_border=false&background=FFFFFF&text=777777&widget_border=true&radius=5&border-color=DDDDDD&user_id=316217337&time=1439435405902' allowTransparency='true' frameborder='0' scrolling='no' style='border:none; overflow:hidden; width:220px; height:1101px;'></iframe>
-</div>
-
-<div class="row">
+<div class="row module">
 	<div class="small-12 columns">
 		<div class="ad skyscraper">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
