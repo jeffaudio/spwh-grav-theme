@@ -84,6 +84,10 @@ header.post {
 		.subheading { font-size: 1em; }
 	}
 
+	.boxed-link * {
+		margin-bottom: 0.5em;
+	}
+
 	.feature-image {
 		border-radius: $global-radius;
 	}

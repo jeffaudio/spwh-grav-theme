@@ -3,10 +3,14 @@ form.search {
 
 	input {
 		border-radius: $border-radius-value 0 0 $border-radius-value;
+		margin: 0;
 	}
 
 	.button {
 		padding: 0;
+		margin: 0;
 		border-radius: 0 $border-radius-value $border-radius-value 0;
 	}
+
+	a { margin: 0; }
 }

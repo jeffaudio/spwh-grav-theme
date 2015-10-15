@@ -70,10 +70,13 @@ a.boxed-link {
 
 	* {
 		border: 1px solid $chambourd;
+		margin: 0;
+		margin-bottom: 1em;
 		border-radius: $global-radius;
 		padding: 0.15em 0.5em;
 		color: $chambourd;
 		font-family: $body-font-family;
+		text-align: center;
 
 		&:hover { background: $flattering-peach; }
 	}

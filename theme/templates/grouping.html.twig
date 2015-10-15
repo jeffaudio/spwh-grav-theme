@@ -1,5 +1,7 @@
 {% import 'macros/cards.twig' as cards %}
 
+{% set siteName = uri.query('site')|default('all') %}
+
 {% embed 'partials/base.html.twig' %}
 
 	{% set collection = page.collection() %}
@@ -7,7 +9,7 @@
 	{% block content %}
 		<div class="row">
 			<main class="blog">
-				<h1 class="collection-title">{{ page.title|title }}</h1>
+				<h1 class="collection-title">{{ page.find('/' ~ siteName).title ~ ' ' ~ page.title|title }}</h1>
 				{{ page.content }}
 
 				{% set taxlist = taxonomylist.get() %}
@@ -15,16 +17,22 @@
 					<ul class="series">
     				{% for tax,value in taxlist[page.header.grouping] %}
     					{% set title = tax|title %}
-    					{% set url = page.parent.url ~ '/' ~ page.header.grouping ~ config.system.param_sep ~ tax|e('url') %}
-    					{% if page.header.site %}
-    						{% set postFilter = {'category': tax, 'site': page.header.site} %}
+
+    					{% if page.header.grouping == 'tag' %}
+    						{% set postFilter = {'tag': tax} %}
     					{% else %}
     						{% set postFilter = {'category': tax} %}
     					{% endif %}
+    					{% set postFilter = postFilter|merge({'site': siteName}) %}
+
+    					{% set url = uri.rootUrl() ~ '/' ~ siteName ~ '/' ~ page.header.grouping ~ config.system.param_sep ~ tax|e('url') %}
+
     					{% set posts = taxonomy.findTaxonomy(postFilter)|randomize %}
     					{% if posts.count > 0 %}
 
 	    					{% set thumbUrl = theme_url ~ '/images/logo-thumb.jpg' %}
+	    					{% if not posts.media %}
+	    					{% endif %}
 	    					{% if posts|first.media.images %}
 	    						{% set thumbUrl = posts|first.media.images|first.cropZoom(500,350).url %}
 	    					{% endif %}

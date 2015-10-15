@@ -18,17 +18,16 @@
 
 		<div class="row">
 			<main class="blog">
-				{% if uri.params and not uri.param('page') %}
+				{% if uri.param('category') or uri.param('tag') %}
 					{% if uri.param('tag') %} {% set filterText = uri.param('tag') %} {% endif %}
 					{% if uri.param('category') %} {% set filterText = uri.param('category') %} {% endif %}
-					<h1 class="collection-title">{{ filterText|title }} {{ 'Post'|pluralize(page.children.count()) }}</h1>
+					<h1 class="collection-title">{{ page.title }} {{ filterText|title }} {{ 'Post'|pluralize(page.collection.count()) }}</h1>
 
 					{{ page.content }}
 
 					{% set groups = [] %}
 
 					{% for child in page.collection %}
-
 							{% if child.header.grouping %}
 								{% set series = child.parent() %}
 								{% if series.title not in groups %}
@@ -50,10 +49,10 @@
 					{% for child in collection %}
 						{% include 'partials/summary.html.twig' with {'page':child, 'blog':page} %}
 					{% endfor %}
+				{% endif %}
 
-					{% if config.plugins.pagination.enabled and collection.params.pagination %}
-						{% include 'partials/pagination.html.twig' with {'pagination':collection.params.pagination} %}
-					{% endif %}
+				{% if config.plugins.pagination.enabled and collection.params.pagination %}
+					{% include 'partials/pagination.html.twig' with {'pagination':collection.params.pagination} %}
 				{% endif %}
 			</main>
 
