@@ -25,18 +25,16 @@
 					{{ page.content }}
 
 					{% set groups = [] %}
-
 					{% for child in page.collection %}
-							{% if child.header.grouping %}
-								{% set series = child.parent() %}
-								{% if series.title not in groups %}
-									{% include 'partials/series.html.twig' with {'series': series, 'blog': page} %}
-									{% set groups = groups|merge([series.title]) %}
-								{% endif %}
-							{% elseif child.header.taxonomy %}
-								{% include 'partials/summary.html.twig' with {'page': child, 'blog': page} %}
+						{% if child.header.grouping %}
+							{% set series = child.parent() %}
+							{% if series.title not in groups %}
+								{% include 'partials/series.html.twig' with {'series': series, 'blog': page} %}
+								{% set groups = groups|merge([series.title]) %}
 							{% endif %}
-						
+						{% elseif child.header.taxonomy %}
+							{% include 'partials/summary.html.twig' with {'page': child, 'blog': page} %}
+						{% endif %}
 					{% endfor %}
 
 				{% else %}

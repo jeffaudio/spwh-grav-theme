@@ -63,22 +63,42 @@
 				<footer>
 					{% if page.taxonomy.category %}
 						<p>Categories: {% for category in page.taxonomy.category %}<a href="{{ taxonomyRoot }}/category:{{ category }}" rel="category">{{ category }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</p>
+					{% else %}
+						<p>&nbsp;</p>
 					{% endif %}
 					{% include 'partials/social.html.twig' %}
 				</footer>
 
 				{% if page.taxonomy.tag %}
-					<ul class="tags">
+					<div class="tags">
 						{% for tag in page.taxonomy.tag %}
-							<li class="tag"><a href="{{ taxonomyRoot }}/tag:{{ tag }}" rel="tag" class="boxed-link"><div>{{ tag }}</div></a></li>
+							<a href="{{ taxonomyRoot }}/tag:{{ tag }}" rel="tag" class="boxed-link"><span>{{ tag }}</span></a>
 						{% endfor %}
-					</ul>
+					</div>
 				{% endif %}
 			</article>
 
 			{% if config.plugins.relatedpages.enabled and related_pages|length > 0 %}
     		{% include 'partials/related.html.twig' %}
 			{% endif %}
+
+			<div class="row comments">
+				<div class="small-12 columns">
+					<div id="disqus_thread"></div>
+					<script type="text/javascript">
+  					/* * * CONFIGURATION VARIABLES * * */
+  					var disqus_shortname = 'softpuppywarmhouse';
+  
+  					/* * * DON'T EDIT BELOW THIS LINE * * */
+  					(function() {
+      				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  					})();
+					</script>
+					<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+				</div>
+			</div>
 		</main>
 
 		<section class="sidebar">

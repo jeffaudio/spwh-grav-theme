@@ -5,8 +5,7 @@
 
 <div class="row module">
 	<div class="small-12 columns">
-		<h4 class="title">Popular Categories</h4>
-		{% include 'partials/popular_tags.html.twig' %}
+		{% include 'partials/popular_tags.html.twig' with {'taxtype': 'category'} %}
 	</div>
 </div>
 

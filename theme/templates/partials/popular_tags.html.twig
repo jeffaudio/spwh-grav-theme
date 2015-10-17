@@ -1,11 +1,13 @@
 {% set taxlist = taxonomylist.get() %}
+{% set taxplural = taxtype|pluralize(2) %}
 
 {% if taxlist %}
-	<div class="tags">
-		{% for tax,value in taxlist['category']|slice(0,10) %}	
-			<a class="boxed-link" href="{{ base_url }}/tag{{config.system.param_sep }}{{ tax|e('url')	 }}"><span>{{ tax|upper }}</span></a>
+	<h4 class="title">Popular {{ taxplural|capitalize }}</h4>
+	<div class="{{ taxtype|pluralize(2) }}">
+		{% for tax,value in taxlist[taxtype]|slice(0,10) %}	
+			<a class="boxed-link" href="{{ uri.rootUrl }}/posts/category{{config.system.param_sep }}{{ tax|e('url')	 }}"><span>{{ tax|upper }}</span></a>
 		{% endfor %}
 	</div>
 
-	<p><a href="{{ base_url }}/categories">View all categories…</a></p>
+	<p><a href="{{ uri.rootUrl }}/{{ taxplural }}?site=all">View all {{ taxplural }}…</a></p>
 {% endif %}

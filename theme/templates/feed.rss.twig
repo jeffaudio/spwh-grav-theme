@@ -12,7 +12,7 @@
         <item>
             <title>{{ item.title|e }}</title>
             <link>{{ item.url(true) }}</link>
-            <description><![CDATA[<img src="{{ item.media.images|first.html }}{{ item.summary }}]]></description>
+            <description><![CDATA[<img src="{{ item.media.images|first.html }}{{ item.summary }}<p><a href="{{ item.url(true) }}">Continue reading…</p>]]></description>
             <category>{{ item.taxonomy.category|join(',') }}</category>
             <category>{{ item.taxonomy.tag|join(',') }}</category>
             

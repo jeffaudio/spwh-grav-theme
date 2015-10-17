@@ -11,6 +11,10 @@ li.clearing-featured-img {
 	margin-right: 0;
 }
 
+.row.comments {
+	margin-bottom: 1em;
+}
+
 header.post,.post header,.series header {
 	a { 
 		border-bottom: none;
@@ -76,12 +80,23 @@ header.post {
 	}
 }
 
-
+.tags a span:before {
+	content: '#';
+}
 
 .post,.series {
+	margin-bottom: 1em;
+	
 	header {
 		.title { font-size: 2em; }
 		.subheading { font-size: 1em; }
+	}
+
+	.tags,.categories {
+		a span {
+			font-size: 0.85em;
+			white-space: pre;
+		}
 	}
 
 	.boxed-link * {

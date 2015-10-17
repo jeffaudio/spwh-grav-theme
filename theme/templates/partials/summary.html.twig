@@ -12,11 +12,11 @@
 			{{ page.date|date("M. d, Y") }}
 		</h3>
 		{% if page.taxonomy.category %}
-			<ul class="categories">
+			<div class="categories">
 				{% for category in page.taxonomy.category %}
-					<li class="category"><a class="boxed-link" href="{{  blog_url }}/category:{{ category }}" rel="category"><div>{{ category }}</div></a></li>
+					<a class="boxed-link" href="{{  blog_url }}/category:{{ category }}" rel="category"><span>{{ category }}</span></a>
 				{% endfor %}
-			</ul>
+			</div>
 		{% endif %}
 	</header>
 

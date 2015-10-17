@@ -25,17 +25,18 @@
     					{% endif %}
     					{% set postFilter = postFilter|merge({'site': siteName}) %}
 
-    					{% set url = uri.rootUrl() ~ '/' ~ siteName ~ '/' ~ page.header.grouping ~ config.system.param_sep ~ tax|e('url') %}
+    					{% set url = uri.rootUrl() ~ '/posts/' ~ page.header.grouping ~ config.system.param_sep ~ tax|e('url') %}
 
     					{% set posts = taxonomy.findTaxonomy(postFilter)|randomize %}
     					{% if posts.count > 0 %}
 
-	    					{% set thumbUrl = theme_url ~ '/images/logo-thumb.jpg' %}
-	    					{% if not posts.media %}
-	    					{% endif %}
-	    					{% if posts|first.media.images %}
-	    						{% set thumbUrl = posts|first.media.images|first.cropZoom(500,350).url %}
-	    					{% endif %}
+
+	    					{% set thumbUrl = url('theme://images/logo-thumb.jpg') %}
+	    					{% set break = false %}
+	    					{% for post in posts if not break and post.media.images %}
+	    						{% set thumbUrl = post.media.images|first.cropZoom(500,350).url %}
+	    						{% set break = true %}
+	    					{% endfor %}
 
 	    					<li>
 	    						<a class="item" href="{{ url }}" title="{{ title }}">
