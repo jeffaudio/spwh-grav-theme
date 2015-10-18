@@ -67,7 +67,7 @@
 		});
 
 		function search(text) {
-			var url = "{{ base_url }}{{ config.plugins.simplesearch.route }}/query";
+			var url = "{{ uri.rootUrl }}{{ config.plugins.simplesearch.route }}/query";
 			window.location.href = url + '{{ config.system.param_sep }}' + text;
 		}
 	})();
