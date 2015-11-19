@@ -46,7 +46,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js"></script>
 <!-- <script async src=http://use.edgefonts.net/source-sans-pro;merriweather.js></script> -->
-<script>
+<script type="text/javascript">
 	(function() {
 		$(document).foundation();
 
@@ -71,6 +71,19 @@
 			window.location.href = url + '{{ config.system.param_sep }}' + text;
 		}
 	})();
+
+	var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//softpuppywarmhouse.com/analytics/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 1]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
 </script>
+<noscript><p><img src="//softpuppywarmhouse.com/analytics/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
 </body>
 </html>

@@ -2,7 +2,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>{{ page.title }} | Soft Puppy Warm House</title>
+        <title>{% if page.title != "All" %}{{ page.title }} | {% endif %}Soft Puppy Warm House</title>
         <link>{{ uri.url(true) }}.{{ uri.extension() }}</link>
         <description>{{ collection.params.description }}</description>
         <language>{{ collection.params.lang }}</language>
@@ -15,7 +15,6 @@
             <description><![CDATA[<img src="{{ item.media.images|first.html }}{{ item.summary }}<p><a href="{{ item.url(true) }}">Continue reading…</p>]]></description>
             <category>{{ item.taxonomy.category|join(',') }}</category>
             <category>{{ item.taxonomy.tag|join(',') }}</category>
-            
             <guid>{{ item.url(true) }}</guid>
             <pubDate>{{ item.date|date('D, d M Y H:i:s O') }}</pubDate>
         </item>
